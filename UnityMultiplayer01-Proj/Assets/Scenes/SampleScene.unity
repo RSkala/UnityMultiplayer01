@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 494613388}
   - component: {fileID: 494613387}
   - component: {fileID: 494613386}
+  - component: {fileID: 494613390}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -356,6 +357,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &494613390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494613385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fce4c535a6554886b7200a75f30c379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,7 +802,6 @@ GameObject:
   - component: {fileID: 1215416008}
   - component: {fileID: 1215416007}
   - component: {fileID: 1215416006}
-  - component: {fileID: 1215416005}
   m_Layer: 5
   m_Name: HostButton
   m_TagString: Untagged
@@ -817,18 +829,6 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 320, y: 80}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1215416005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215416003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fce4c535a6554886b7200a75f30c379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1215416006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,9 +873,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1215416005}
-        m_TargetAssemblyTypeName: JoinServer, Assembly-CSharp
-        m_MethodName: ClientJoinServer
+      - m_Target: {fileID: 494613390}
+        m_TargetAssemblyTypeName: ConnectionButtons, Assembly-CSharp
+        m_MethodName: StartHost
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1179,7 +1179,6 @@ GameObject:
   - component: {fileID: 1789893098}
   - component: {fileID: 1789893097}
   - component: {fileID: 1789893096}
-  - component: {fileID: 1789893099}
   m_Layer: 5
   m_Name: ClientJoinButton
   m_TagString: Untagged
@@ -1251,9 +1250,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1789893099}
-        m_TargetAssemblyTypeName: JoinServer, Assembly-CSharp
-        m_MethodName: ClientJoinServer
+      - m_Target: {fileID: 494613390}
+        m_TargetAssemblyTypeName: ConnectionButtons, Assembly-CSharp
+        m_MethodName: StartClient
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1301,18 +1300,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789893094}
   m_CullTransparentMesh: 1
---- !u!114 &1789893099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789893094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fce4c535a6554886b7200a75f30c379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

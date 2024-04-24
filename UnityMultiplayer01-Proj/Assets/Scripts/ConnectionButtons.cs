@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class JoinServer : MonoBehaviour
+public class ConnectionButtons : MonoBehaviour
 {
-    public void ClientJoinServer()
+    public void StartHost()
     {
-        Debug.Log("JoinServer.ClientJoinServer");
-        
+        Debug.Log("ConnectionButtons.StartHost");
+        NetworkManager.Singleton.StartHost();
+    }
+
+    public void StartClient()
+    {
+        Debug.Log("ConnectionButtons.StartClient");
+
         NetworkManager.Singleton.StartClient();
         //NetworkManager.Singleton.StartServer();
-        //NetworkManager.Singleton.StartHost();
     }
 
     void Start()
