@@ -10,6 +10,8 @@ public class TestControls : MonoBehaviour
     {
         _inputReader.MoveEvent += HandleMove;
         _inputReader.PrimaryFireEvent += HandlePrimaryFire;
+
+        // If Reload Domain is disabled in Editor Play Mode settings, this needs to be called, otherwise controls will not register.
         _inputReader.EnableInputReaderControls();
     }
 
