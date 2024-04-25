@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &70510509910156866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4617434151820541229}
+  m_Layer: 0
+  m_Name: ProjectileSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4617434151820541229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70510509910156866}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6976356881978397093}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &152463844383620866
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +144,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.425, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4617434151820541229}
   m_Father: {fileID: 5611239150579060404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6086170802884291448
@@ -345,6 +377,7 @@ GameObject:
   - component: {fileID: 3227581413383236381}
   - component: {fileID: 8877720145744840045}
   - component: {fileID: 4923955292855139134}
+  - component: {fileID: -9188548127488802887}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -381,8 +414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 71783926
-  InScenePlacedSourceGlobalObjectIdHash: 0
+  GlobalObjectIdHash: 3477816299
+  InScenePlacedSourceGlobalObjectIdHash: 842607266
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -479,6 +512,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: f9aa2048abf314856a224ddc266de668, type: 2}
   _turretTransform: {fileID: 5611239150579060404}
+--- !u!114 &-9188548127488802887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907157771278956724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf6dad713f784f7a8c5ecfdf7b255d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: f9aa2048abf314856a224ddc266de668, type: 2}
+  _projectileSpawnPoint: {fileID: 4617434151820541229}
+  _serverProjectilePrefab: {fileID: 6692674291338304058, guid: 743e8c250f783455fa156619ace7d06f, type: 3}
+  _clientProjectilePrefab: {fileID: 8942639766677664171, guid: d4c83105e42544f6598ba2ec1deb74cf, type: 3}
+  _projectileSpeed: 30
 --- !u!1 &7536055903714231246
 GameObject:
   m_ObjectHideFlags: 0
