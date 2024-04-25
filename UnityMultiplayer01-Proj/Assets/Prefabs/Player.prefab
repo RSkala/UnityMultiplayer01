@@ -341,7 +341,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1707242224295609655}
   - component: {fileID: 1357078597734000923}
+  - component: {fileID: 7797751047322940698}
   - component: {fileID: 3227581413383236381}
+  - component: {fileID: 8877720145744840045}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -387,6 +389,33 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!50 &7797751047322940698
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907157771278956724}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!114 &3227581413383236381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +447,23 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &8877720145744840045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907157771278956724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b4ecfda40dd44c3bf48b4e8ad38919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: f9aa2048abf314856a224ddc266de668, type: 2}
+  _tankTreadsTransform: {fileID: 5887804038220261067}
+  _rigidbody2D: {fileID: 7797751047322940698}
+  _movementSpeed: 4
+  _turningRate: 270
 --- !u!1 &7536055903714231246
 GameObject:
   m_ObjectHideFlags: 0

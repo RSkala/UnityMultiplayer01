@@ -18,6 +18,8 @@ public class InputReader : ScriptableObject, IPlayerActions
     Controls _controls;
 
     // IPlayerActions methods
+    #region IPlayerActions
+    
     public void OnMove(InputAction.CallbackContext context)
     {
         Vector2 moveInput = context.ReadValue<Vector2>();
@@ -38,6 +40,18 @@ public class InputReader : ScriptableObject, IPlayerActions
         }
     }
 
+    #endregion // IPlayerActions
+
+    void Awake()
+    {
+        Debug.Log("InputReader.Awake");
+    }
+
+    void Start()
+    {
+        Debug.Log("InputReader.Start");
+    }
+
     void OnEnable()
     {
         EnableInputReaderControls();
@@ -45,13 +59,14 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     void OnDestroy()
     {
+        Debug.Log("InputReader.Start");
     }
 
     public void EnableInputReaderControls()
     {
         if(_controls == null)
         {
-            Debug.Log(" - Creating _controls...");
+            Debug.Log("InputReader.EnableInputReaderControls - Creating _controls...");
             _controls = new Controls();
             _controls.Player.SetCallbacks(this); // "Player" refers to the "Player" Action Map in the Controls.inputactions asset
         }
