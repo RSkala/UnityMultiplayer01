@@ -35,6 +35,8 @@ public class ProjectileLauncher : NetworkBehaviour
     {
         //base.OnNetworkDespawn();
         if(!IsOwner) { return; }
+
+        _inputReader.PrimaryFireEvent -= HandlePrimaryFire;
     }
 
     void Update()
