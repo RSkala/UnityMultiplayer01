@@ -11,11 +11,17 @@ public class ProjectileLauncher : NetworkBehaviour
     [SerializeField] Transform _projectileSpawnPoint;
     [SerializeField] GameObject _serverProjectilePrefab;
     [SerializeField] GameObject _clientProjectilePrefab;
+    [SerializeField] GameObject _muzzleFlash;
+    [SerializeField] Collider2D _playerCollider;
 
     [Header("Settings")]
     [SerializeField] float _projectileSpeed;
+    [SerializeField] float _fireRate;
+    [SerializeField] float _muzzleFlashDuration;
 
     bool _shouldFire;
+    float _previousFireTime;
+    float _muzzleFlashTimer;
 
     public override void OnNetworkSpawn()
     {
@@ -33,6 +39,15 @@ public class ProjectileLauncher : NetworkBehaviour
 
     void Update()
     {
+        if(_muzzleFlashTimer > 0.0f)
+        {
+            _muzzleFlashTimer -= Time.deltaTime;
+            if(_muzzleFlashTimer <= 0.0f)
+            {
+                _muzzleFlash.SetActive(false);
+            }
+        }
+
         if(!IsOwner) { return; }
 
         if(!_shouldFire) { return; }
@@ -48,8 +63,22 @@ public class ProjectileLauncher : NetworkBehaviour
 
     void SpawnDummyProjectile(Vector3 spawnPosition, Vector3 spawnDirection)
     {
+        // Enable the Muzzle Flash
+        _muzzleFlash.SetActive(true);
+        _muzzleFlashTimer = _muzzleFlashDuration;
+
+        // Create the dummy projectile (the "true" projectile will be fired from the server)
         GameObject projectileInstance = GameObject.Instantiate(_clientProjectilePrefab, spawnPosition, Quaternion.identity);
         projectileInstance.transform.up = spawnDirection;
+
+        // Ignore collision between the player collider and the newly created projectile
+        Physics2D.IgnoreCollision(_playerCollider, projectileInstance.GetComponent<Collider2D>());
+
+        // Set the velocity of the projectile
+        if(projectileInstance.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody2D))
+        {
+            rigidbody2D.velocity = rigidbody2D.transform.up * _projectileSpeed;
+        }
     }
 
     // In order to create an RPC, the method must have the [ServerRpc] attribute and the method name must end with "ServerRpc"
@@ -63,6 +92,16 @@ public class ProjectileLauncher : NetworkBehaviour
     {
         GameObject projectileInstance = GameObject.Instantiate(_serverProjectilePrefab, spawnPosition, Quaternion.identity);
         projectileInstance.transform.up = spawnDirection;
+
+        // Ignore collision between the player collider and the newly created projectile
+        Physics2D.IgnoreCollision(_playerCollider, projectileInstance.GetComponent<Collider2D>());
+
+        // Set the velocity of the projectile
+        if(projectileInstance.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody2D))
+        {
+            rigidbody2D.velocity = rigidbody2D.transform.up * _projectileSpeed;
+        }
+
         SpawnDummyProjectileClientRpc(spawnPosition, spawnPosition);
     }
 
