@@ -73,7 +73,7 @@ public class InputReader : ScriptableObject, IPlayerActions
     {
         if(_controls == null)
         {
-            Debug.Log("InputReader.EnableInputReaderControls - Creating _controls...");
+            //Debug.Log("InputReader.EnableInputReaderControls - Creating _controls...");
             _controls = new Controls();
             _controls.Player.SetCallbacks(this); // "Player" refers to the "Player" Action Map in the Controls.inputactions asset
         }

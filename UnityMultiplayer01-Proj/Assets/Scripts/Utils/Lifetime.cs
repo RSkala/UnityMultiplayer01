@@ -18,6 +18,6 @@ public class Lifetime : MonoBehaviour
 
     void OnDestroy()
     {
-        Debug.Log("Lifetime.OnDestroy - " + name);
+        //Debug.Log("Lifetime.OnDestroy - " + name);
     }
 }
