@@ -81,14 +81,15 @@ public class ProjectileLauncher : NetworkBehaviour
         // Create the dummy projectile (the "true" projectile will be fired from the server)
         GameObject projectileInstance = GameObject.Instantiate(_clientProjectilePrefab, spawnPosition, Quaternion.identity);
         projectileInstance.transform.up = spawnDirection;
+        //Debug.Log("SpawnDummyProjectile - spawnDirection: " + spawnDirection);
 
         // Ignore collision between the player collider and the newly created projectile
         Physics2D.IgnoreCollision(_playerCollider, projectileInstance.GetComponent<Collider2D>());
 
         // Set the velocity of the projectile
-        if(projectileInstance.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody2D))
+        if(projectileInstance.TryGetComponent<Rigidbody2D>(out Rigidbody2D projectileRigidbody2D))
         {
-            rigidbody2D.velocity = rigidbody2D.transform.up * _projectileSpeed;
+            projectileRigidbody2D.velocity = projectileRigidbody2D.transform.up * _projectileSpeed;
         }
     }
 
@@ -103,17 +104,18 @@ public class ProjectileLauncher : NetworkBehaviour
     {
         GameObject projectileInstance = GameObject.Instantiate(_serverProjectilePrefab, spawnPosition, Quaternion.identity);
         projectileInstance.transform.up = spawnDirection;
+        //Debug.Log("PrimaryFireServerRpc - spawnDirection: " + spawnDirection);
 
         // Ignore collision between the player collider and the newly created projectile
         Physics2D.IgnoreCollision(_playerCollider, projectileInstance.GetComponent<Collider2D>());
 
         // Set the velocity of the projectile
-        if(projectileInstance.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody2D))
+        if(projectileInstance.TryGetComponent<Rigidbody2D>(out Rigidbody2D projectileRigidbody2D))
         {
-            rigidbody2D.velocity = rigidbody2D.transform.up * _projectileSpeed;
+            projectileRigidbody2D.velocity = projectileRigidbody2D.transform.up * _projectileSpeed;
         }
 
-        SpawnDummyProjectileClientRpc(spawnPosition, spawnPosition);
+        SpawnDummyProjectileClientRpc(spawnPosition, spawnDirection);
     }
 
     [ClientRpc]
