@@ -39,6 +39,7 @@ public class ProjectileLauncher : NetworkBehaviour
 
     void Update()
     {
+        // Show Muzzle Flash
         if(_muzzleFlashTimer > 0.0f)
         {
             _muzzleFlashTimer -= Time.deltaTime;
@@ -49,11 +50,19 @@ public class ProjectileLauncher : NetworkBehaviour
         }
 
         if(!IsOwner) { return; }
-
         if(!_shouldFire) { return; }
 
+        // Handle fire rate limiter
+        if(Time.time < (1.0f / _fireRate) + _previousFireTime)
+        {
+            return;
+        }
+
+        Debug.Log("firing projectile - _fireRate: " + _fireRate + ", _previousFireTime: " + _previousFireTime);
         PrimaryFireServerRpc(_projectileSpawnPoint.position, _projectileSpawnPoint.up);
         SpawnDummyProjectile(_projectileSpawnPoint.position, _projectileSpawnPoint.up);
+
+        _previousFireTime = Time.time;
     }
 
     void HandlePrimaryFire(bool shouldFire)
