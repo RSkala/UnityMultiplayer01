@@ -13,7 +13,9 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event UnityAction<bool> PrimaryFireEvent;
     public event UnityAction<Vector2> MoveEvent;
 
-    public UnityEvent<bool> PrimaryFireEvent2;
+    //public UnityEvent<bool> PrimaryFireEvent2;
+
+    public Vector2 AimPosition { get; private set; }
 
     Controls _controls;
 
@@ -40,6 +42,11 @@ public class InputReader : ScriptableObject, IPlayerActions
         }
     }
 
+    public void OnAim(InputAction.CallbackContext context)
+    {
+        AimPosition = context.ReadValue<Vector2>();
+    }
+
     #endregion // IPlayerActions
 
     void Awake()
@@ -59,7 +66,7 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     void OnDestroy()
     {
-        Debug.Log("InputReader.Start");
+        Debug.Log("InputReader.OnDestroy");
     }
 
     public void EnableInputReaderControls()

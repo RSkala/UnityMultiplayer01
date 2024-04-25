@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 7797751047322940698}
   - component: {fileID: 3227581413383236381}
   - component: {fileID: 8877720145744840045}
+  - component: {fileID: 4923955292855139134}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -380,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 842607266
+  GlobalObjectIdHash: 71783926
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -464,6 +465,20 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 7797751047322940698}
   _movementSpeed: 5
   _turningRate: 270
+--- !u!114 &4923955292855139134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907157771278956724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362a2d000b8024779b643d979966e489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: f9aa2048abf314856a224ddc266de668, type: 2}
+  _turretTransform: {fileID: 5611239150579060404}
 --- !u!1 &7536055903714231246
 GameObject:
   m_ObjectHideFlags: 0
