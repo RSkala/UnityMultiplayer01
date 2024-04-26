@@ -462,6 +462,7 @@ GameObject:
   - component: {fileID: 8877720145744840045}
   - component: {fileID: 4923955292855139134}
   - component: {fileID: -9188548127488802887}
+  - component: {fileID: 6352930074712905441}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -498,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 842607266
+  GlobalObjectIdHash: 71783926
   InScenePlacedSourceGlobalObjectIdHash: 842607266
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -617,6 +618,21 @@ MonoBehaviour:
   _projectileSpeed: 30
   _fireRate: 0.75
   _muzzleFlashDuration: 0.075
+--- !u!114 &6352930074712905441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907157771278956724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a72c5d4e3ca8c4d66885fdee9f6ef236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 100
+  CurrentHealth:
+    m_InternalValue: 0
 --- !u!1 &7536055903714231246
 GameObject:
   m_ObjectHideFlags: 0
