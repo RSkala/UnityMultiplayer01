@@ -109,6 +109,12 @@ public class ProjectileLauncher : NetworkBehaviour
         // Ignore collision between the player collider and the newly created projectile
         Physics2D.IgnoreCollision(_playerCollider, projectileInstance.GetComponent<Collider2D>());
 
+        // Get the DealDamageOnContact component and set the "Owner" (the player/client who launched the projectile)
+        if(projectileInstance.TryGetComponent<DealDamageOnContact>(out var dealDamageOnContact))
+        {
+            dealDamageOnContact.SetOwner(OwnerClientId);
+        }
+
         // Set the velocity of the projectile
         if(projectileInstance.TryGetComponent<Rigidbody2D>(out Rigidbody2D projectileRigidbody2D))
         {
