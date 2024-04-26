@@ -52,6 +52,7 @@ public class Health : NetworkBehaviour
         if(_isDead) { return;}
         //if(!IsServer) { return; }
 
+        int oldHealth = CurrentHealth.Value;
         int newHealth = CurrentHealth.Value + value;
         CurrentHealth.Value = Mathf.Clamp(newHealth, 0, MaxHealth);
 
